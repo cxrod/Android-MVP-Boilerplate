@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">boilerplate</string>
+
+    <!-- Dialog Factory -->
+    <string name="dialog_action_ok">OK</string>
+    <string name="dialog_action_cancel">Cancel</string>
+    <string name="dialog_error_title">Sorry</string>
+
+    <!--play store-->
+    <string name="app_google_play_store_link" translatable="false">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link" translatable="false">"market://details?id="</string>
+
+</resources>
