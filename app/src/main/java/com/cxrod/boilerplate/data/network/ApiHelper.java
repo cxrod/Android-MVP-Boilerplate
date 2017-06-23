@@ -1,40 +1,29 @@
 package com.cxrod.boilerplate.data.network;
 
-import com.cxrod.boilerplate.data.network.model.BaseResponse;
-import com.cxrod.boilerplate.data.network.model.BlogResponse;
-import com.cxrod.boilerplate.data.network.model.LoginRequest;
-import com.cxrod.boilerplate.data.network.model.LoginResponse;
-import com.cxrod.boilerplate.data.network.model.OpenSourceResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import io.reactivex.Observable;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
-
-import static com.cxrod.boilerplate.BuildConfig.API_KEY;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by crodriguez on 6/14/17.
+ * Created by crodriguez on 6/23/17.
  */
 
-public interface ApiHelper {
+public class ApiHelper {
+    /******** Helper class that sets up a new services *******/
 
-    @POST("588d14f4100000a9072d2943")
-    Observable<LoginResponse> doGoogleLoginApiCall(@Body LoginRequest.GoogleLoginRequest request);
-
-    @POST("588d15d3100000ae072d2944")
-    Observable<LoginResponse> doFacebookLoginApiCall(@Body LoginRequest.FacebookLoginRequest request);
-
-    @POST("588d15f5100000a8072d2945")
-    Observable<LoginResponse> doServerLoginApiCall(@Body LoginRequest.ServerLoginRequest request);
-
-    @POST("588d161c100000a9072d2946")
-    Observable<BaseResponse> doLogoutApiCall();
-
-    @GET("5926ce9d11000096006ccb30")
-    Observable<BlogResponse> getBlogApiCall();
-
-    @GET("5926c34212000035026871cd")
-    Observable<OpenSourceResponse> getOpenSourceApiCall();
+    public static ApiService newApiService() {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(MyGsonTypeAdapterFactory.create())
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(RibotsService.ENDPOINT)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return retrofit.create(ApiService.class);
+    }
 }

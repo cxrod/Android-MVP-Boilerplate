@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.cxrod.boilerplate.injection.component.ActivityComponent;
-import com.cxrod.boilerplate.util.CommonUtils;
+import com.cxrod.boilerplate.util.DialogFactory;
 
 import butterknife.Unbinder;
 
@@ -46,9 +46,9 @@ public abstract class BaseFragment extends Fragment implements MvpView {
     }
 
     @Override
-    public void showLoading() {
+    public void showLoading(int resId) {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
+        mProgressDialog = DialogFactory.createProgressDialog(this.getContext(), resId, false);
     }
 
     @Override

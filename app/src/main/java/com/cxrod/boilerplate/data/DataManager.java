@@ -1,7 +1,7 @@
 package com.cxrod.boilerplate.data;
 
 import com.cxrod.boilerplate.data.db.DbHelper;
-import com.cxrod.boilerplate.data.network.ApiHelper;
+import com.cxrod.boilerplate.data.network.ApiService;
 import com.cxrod.boilerplate.data.pref.PreferencesHelper;
 
 import io.reactivex.Observable;
@@ -10,7 +10,7 @@ import io.reactivex.Observable;
  * Created by crodriguez on 6/14/17.
  */
 
-public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
+public interface DataManager extends DbHelper, PreferencesHelper, ApiService {
 
     void updateApiHeader(Long userId, String accessToken);
 

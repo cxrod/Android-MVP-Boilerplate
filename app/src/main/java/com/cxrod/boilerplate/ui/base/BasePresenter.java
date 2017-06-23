@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.cxrod.boilerplate.R;
 import com.cxrod.boilerplate.data.DataManager;
+import com.cxrod.boilerplate.util.AppConstants;
 import com.cxrod.boilerplate.util.rx.SchedulerProvider;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -69,53 +70,6 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     public CompositeDisposable getCompositeDisposable() {
         return mCompositeDisposable;
-    }
-
-    @Override
-    public void handleApiError(ANError error) {
-
-        if (error == null || error.getErrorBody() == null) {
-            getMvpView().onError(com.bellbank.bellbanking.R.string.api_default_error);
-            return;
-        }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
-                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
-            getMvpView().onError(com.bellbank.bellbanking.R.string.connection_error);
-            return;
-        }
-
-        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
-                && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
-            getMvpView().onError(com.bellbank.bellbanking.R.string.api_retry_error);
-            return;
-        }
-
-        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-        final Gson gson = builder.create();
-
-        try {
-            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
-
-            if (apiError == null || apiError.getMessage() == null) {
-                getMvpView().onError(com.bellbank.bellbanking.R.string.api_default_error);
-                return;
-            }
-
-            switch (error.getErrorCode()) {
-                case HttpsURLConnection.HTTP_UNAUTHORIZED:
-                case HttpsURLConnection.HTTP_FORBIDDEN:
-                    setUserAsLoggedOut();
-                    getMvpView().openActivityOnTokenExpire();
-                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
-                case HttpsURLConnection.HTTP_NOT_FOUND:
-                default:
-                    getMvpView().onError(apiError.getMessage());
-            }
-        } catch (JsonSyntaxException | NullPointerException e) {
-            Log.e(TAG, "handleApiError", e);
-            getMvpView().onError(R.string.api_default_error);
-        }
     }
 
     @Override
