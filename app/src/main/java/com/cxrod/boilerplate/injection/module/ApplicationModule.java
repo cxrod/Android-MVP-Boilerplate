@@ -3,12 +3,13 @@ package com.cxrod.boilerplate.injection.module;
 import android.app.Application;
 import android.content.Context;
 
-import com.cxrod.boilerplate.BuildConfig;
 import com.cxrod.boilerplate.R;
 import com.cxrod.boilerplate.data.AppDataManager;
 import com.cxrod.boilerplate.data.DataManager;
 import com.cxrod.boilerplate.data.db.AppDbHelper;
 import com.cxrod.boilerplate.data.db.DbHelper;
+import com.cxrod.boilerplate.data.network.ApiHelper;
+import com.cxrod.boilerplate.data.network.ApiService;
 import com.cxrod.boilerplate.data.pref.AppPreferencesHelper;
 import com.cxrod.boilerplate.data.pref.PreferencesHelper;
 import com.cxrod.boilerplate.injection.ApplicationContext;
@@ -49,12 +50,6 @@ public class ApplicationModule {
     }
 
     @Provides
-    @ApiInfo
-    String provideApiKey() {
-        return BuildConfig.API_KEY;
-    }
-
-    @Provides
     @PreferenceInfo
     String providePreferenceName() {
         return AppConstants.PREF_NAME;
@@ -80,18 +75,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    RibotsService provideRibotsService() {
-        return RibotsService.Creator.newRibotsService();
-    }
-
-    @Provides
-    @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
-                                                           PreferencesHelper preferencesHelper) {
-        return new ApiHeader.ProtectedApiHeader(
-                apiKey,
-                preferencesHelper.getCurrentUserId(),
-                preferencesHelper.getAccessToken());
+    ApiService provideApiService(PreferencesHelper preferencesHelper) {
+        return ApiHelper.newApiService(preferencesHelper.getAccessToken());
     }
 
     @Provides
