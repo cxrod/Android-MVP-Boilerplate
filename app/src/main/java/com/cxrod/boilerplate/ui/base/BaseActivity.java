@@ -21,6 +21,7 @@ import com.cxrod.boilerplate.R;
 import com.cxrod.boilerplate.injection.component.ActivityComponent;
 import com.cxrod.boilerplate.injection.module.ActivityModule;
 import com.cxrod.boilerplate.util.CommonUtils;
+import com.cxrod.boilerplate.util.DialogFactory;
 import com.cxrod.boilerplate.util.NetworkUtils;
 
 import butterknife.Unbinder;
@@ -72,9 +73,9 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void showLoading() {
+    public void showLoading(@StringRes int resId) {
         hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this);
+        mProgressDialog = DialogFactory.createProgressDialog(this, resId, false);
     }
 
     @Override
