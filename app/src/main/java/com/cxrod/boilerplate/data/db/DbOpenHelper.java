@@ -2,6 +2,7 @@ package com.cxrod.boilerplate.data.db;
 
 import android.content.Context;
 
+import com.cxrod.boilerplate.data.db.model.DaoMaster;
 import com.cxrod.boilerplate.injection.ApplicationContext;
 import com.cxrod.boilerplate.injection.DatabaseInfo;
 import com.cxrod.boilerplate.util.AppLogger;

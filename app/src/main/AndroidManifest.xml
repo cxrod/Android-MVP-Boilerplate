@@ -15,9 +15,10 @@
         <service android:name=".service.SyncService" />
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.cxrod.boilerplate.ui.splash.SplashActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeFullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

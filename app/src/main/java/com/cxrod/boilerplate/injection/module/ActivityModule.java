@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.cxrod.boilerplate.injection.ActivityContext;
 import com.cxrod.boilerplate.injection.PerActivity;
+import com.cxrod.boilerplate.ui.splash.SplashMvpPresenter;
+import com.cxrod.boilerplate.ui.splash.SplashMvpView;
+import com.cxrod.boilerplate.ui.splash.SplashPresenter;
 import com.cxrod.boilerplate.util.rx.AppSchedulerProvider;
 import com.cxrod.boilerplate.util.rx.SchedulerProvider;
 
@@ -56,64 +59,64 @@ public class ActivityModule {
         return presenter;
     }
 
-    @Provides
+    /*@Provides
     AboutMvpPresenter<AboutMvpView> provideAboutPresenter(
             AboutPresenter<AboutMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     @PerActivity
     LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
             LoginPresenter<LoginMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     @PerActivity
     MainMvpPresenter<MainMvpView> provideMainPresenter(
             MainPresenter<MainMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(
             RatingDialogPresenter<RatingDialogMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
             FeedPresenter<FeedMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     OpenSourceMvpPresenter<OpenSourceMvpView> provideOpenSourcePresenter(
             OpenSourcePresenter<OpenSourceMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
             BlogPresenter<BlogMvpView> presenter) {
         return presenter;
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
         return new FeedPagerAdapter(activity.getSupportFragmentManager());
-    }
+    }*/
 
-    @Provides
+   /* @Provides
     OpenSourceAdapter provideOpenSourceAdapter() {
         return new OpenSourceAdapter(new ArrayList<OpenSourceResponse.Repo>());
-    }
+    }*/
 
-    @Provides
+    /*@Provides
     BlogAdapter provideBlogAdapter() {
         return new BlogAdapter(new ArrayList<BlogResponse.Blog>());
-    }
+    }*/
 
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {

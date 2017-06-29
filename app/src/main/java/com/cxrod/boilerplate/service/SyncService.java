@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import com.cxrod.boilerplate.BoilerplateApplication;
 import com.cxrod.boilerplate.data.DataManager;
+import com.cxrod.boilerplate.injection.component.DaggerServiceComponent;
 import com.cxrod.boilerplate.injection.component.ServiceComponent;
 import com.cxrod.boilerplate.util.AppLogger;
 

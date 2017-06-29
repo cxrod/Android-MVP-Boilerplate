@@ -2,6 +2,21 @@ package com.cxrod.boilerplate.data;
 
 import android.content.Context;
 
+import com.cxrod.boilerplate.data.db.DbHelper;
+import com.cxrod.boilerplate.data.db.model.Option;
+import com.cxrod.boilerplate.data.db.model.Question;
+import com.cxrod.boilerplate.data.db.model.User;
+import com.cxrod.boilerplate.data.network.ApiHelper;
+import com.cxrod.boilerplate.data.network.ApiService;
+import com.cxrod.boilerplate.data.network.model.BaseResponse;
+import com.cxrod.boilerplate.data.network.model.BlogResponse;
+import com.cxrod.boilerplate.data.network.model.LoginRequest;
+import com.cxrod.boilerplate.data.network.model.LoginResponse;
+import com.cxrod.boilerplate.data.network.model.OpenSourceResponse;
+import com.cxrod.boilerplate.data.pref.PreferencesHelper;
+import com.cxrod.boilerplate.injection.ApplicationContext;
+import com.cxrod.boilerplate.util.AppConstants;
+import com.cxrod.boilerplate.util.CommonUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.$Gson$Types;
@@ -29,22 +44,17 @@ public class AppDataManager implements DataManager {
     private final Context mContext;
     private final DbHelper mDbHelper;
     private final PreferencesHelper mPreferencesHelper;
-    private final ApiHelper mApiHelper;
+    private final ApiService mApiService;
 
     @Inject
     public AppDataManager(@ApplicationContext Context context,
                           DbHelper dbHelper,
                           PreferencesHelper preferencesHelper,
-                          ApiHelper apiHelper) {
+                          ApiService ApiService) {
         mContext = context;
         mDbHelper = dbHelper;
         mPreferencesHelper = preferencesHelper;
-        mApiHelper = apiHelper;
-    }
-
-    @Override
-    public ApiHeader getApiHeader() {
-        return mApiHelper.getApiHeader();
+        mApiService = ApiService;
     }
 
     @Override
@@ -55,7 +65,7 @@ public class AppDataManager implements DataManager {
     @Override
     public void setAccessToken(String accessToken) {
         mPreferencesHelper.setAccessToken(accessToken);
-        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
+        // mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
     }
 
     @Override
@@ -71,24 +81,24 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
                                                                   request) {
-        return mApiHelper.doGoogleLoginApiCall(request);
+        return mApiService.doGoogleLoginApiCall(request);
     }
 
     @Override
     public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
                                                                     request) {
-        return mApiHelper.doFacebookLoginApiCall(request);
+        return mApiService.doFacebookLoginApiCall(request);
     }
 
     @Override
     public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
                                                                   request) {
-        return mApiHelper.doServerLoginApiCall(request);
+        return mApiService.doServerLoginApiCall(request);
     }
 
     @Override
-    public Observable<LogoutResponse> doLogoutApiCall() {
-        return mApiHelper.doLogoutApiCall();
+    public Observable<BaseResponse> doLogoutApiCall() {
+        return mApiService.doLogoutApiCall();
     }
 
     @Override
@@ -143,8 +153,8 @@ public class AppDataManager implements DataManager {
 
     @Override
     public void updateApiHeader(Long userId, String accessToken) {
-        mApiHelper.getApiHeader().getProtectedApiHeader().setUserId(userId);
-        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
+        //mApiHelper.getApiHeader().getProtectedApiHeader().setUserId(userId);
+        //mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
     }
 
     @Override
@@ -268,11 +278,11 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Observable<BlogResponse> getBlogApiCall() {
-        return mApiHelper.getBlogApiCall();
+        return mApiService.getBlogApiCall();
     }
 
     @Override
     public Observable<OpenSourceResponse> getOpenSourceApiCall() {
-        return mApiHelper.getOpenSourceApiCall();
+        return mApiService.getOpenSourceApiCall();
     }
 }

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.cxrod.boilerplate.BoilerplateApplication;
 import com.cxrod.boilerplate.R;
 import com.cxrod.boilerplate.injection.component.ActivityComponent;
+import com.cxrod.boilerplate.injection.component.DaggerActivityComponent;
 import com.cxrod.boilerplate.injection.module.ActivityModule;
 import com.cxrod.boilerplate.util.CommonUtils;
 import com.cxrod.boilerplate.util.DialogFactory;
@@ -149,8 +150,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void openActivityOnTokenExpire() {
-        startActivity(LoginActivity.getStartIntent(this));
-        finish();
+        /*startActivity(LoginActivity.getStartIntent(this));
+        finish();*/
     }
 
     public void setUnBinder(Unbinder unBinder) {

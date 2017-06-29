@@ -1,5 +1,11 @@
 package com.cxrod.boilerplate.data.db;
 
+import com.cxrod.boilerplate.data.db.model.DaoMaster;
+import com.cxrod.boilerplate.data.db.model.DaoSession;
+import com.cxrod.boilerplate.data.db.model.Option;
+import com.cxrod.boilerplate.data.db.model.Question;
+import com.cxrod.boilerplate.data.db.model.User;
+
 import java.util.List;
 import java.util.concurrent.Callable;
 

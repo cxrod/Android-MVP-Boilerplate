@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.cxrod.boilerplate.data.DataManager;
 import com.cxrod.boilerplate.injection.component.ApplicationComponent;
+import com.cxrod.boilerplate.injection.component.DaggerApplicationComponent;
 import com.cxrod.boilerplate.injection.module.ApplicationModule;
 import com.cxrod.boilerplate.util.AppLogger;
 
