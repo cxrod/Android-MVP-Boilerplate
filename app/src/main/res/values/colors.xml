@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <color name="colorPrimary">@color/blue_black_light</color>
-    <color name="colorPrimaryDark">@color/black</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="light_gray">#dbdbdb</color>
-    <color name="gray">#7e7e7e</color>
-    <color name="semi_gray">#979797</color>
-    <color name="dark_gray">#696969</color>
-    <color name="bg_color">#f7f7f7</color>
-    <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
-    <color name="black_effective">#2a2a2a</color>
-    <color name="shadow">#d0d8dc</color>
+    <color name="colorPrimary">@color/primary</color>
+    <color name="colorPrimaryDark">@color/primary_dark</color>
+    <color name="colorAccent">@color/accent</color>
+    <color name="primary_text">@color/black_o87</color>
+    <color name="bg_color">@color/gray_50</color>
+
+    <color name="gray">@color/gray_600</color>
+    <color name="semi_gray">@color/gray_500</color>
+    <color name="dark_gray">@color/gray_700</color>
+    <color name="shadow">@color/light_grayish_blue</color>
     <color name="transparent">#00000000</color>
-    <color name="translucent_white">#88ffffff</color>
+    <color name="translucent_white">@color/white_o50</color>
+    <color name="light_gray">@color/gray_400</color>
+
+    <color name="primary">@color/terrally</color>
+    <color name="primary_dark">@color/terrally_dark</color>
+    <color name="primary_light">@color/terrally_ligth</color>
+    <color name="accent">@color/terrally</color>
+    <color name="secondary_text">@color/black_o54</color>
+    <color name="icons">@color/white</color>
+    <color name="divider">@color/black_o12</color>
+    <color name="hint">@color/black_o38</color>
+
+    <!-- Terrally palette -->
+    <color name="terrally">#64bb14</color>
+    <color name="terrally_dark">#2b8a00</color>
+    <color name="terrally_ligth">#98ee50</color>
+    <color name="terrally_ligther">#D1EBB9</color>
+
+    <!-- General Colors -->
+    <color name="black">#000000</color>
+    <color name="black_o87">#DE000000</color>
+    <color name="black_o54">#8A000000</color>
+    <color name="black_o38">#61000000</color>
+    <color name="black_o12">#1F000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="white_o50">#80FFFFFF</color>
+
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+    <color name="light_grayish_blue">#d0d8dc</color>
+
+
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
 
